@@ -1,0 +1,101 @@
+@font-face {
+	font-family: "Naver shopping Icons";
+	src: url('../fonts/Naver-shopping-Icons.eot?555400424');
+	src: url('../fonts/Naver-shopping-Icons.eot?555400424#iefix') format('eot'),
+		url('../fonts/Naver-shopping-Icons.woff2?555400424') format('woff2'),
+		url('../fonts/Naver-shopping-Icons.woff?555400424') format('woff'),
+		url('../fonts/Naver-shopping-Icons.ttf?555400424') format('truetype'),
+		url('../fonts/Naver-shopping-Icons.svg?555400424#Naver shopping Icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.fn-shopping {
+	display: inline-block;
+	height: 1em;
+	line-height: 1em;
+
+	/* 속성 추가 */
+	vertical-align: top;
+}
+.fn-shopping:before {
+	font-family: "Naver shopping Icons";
+	font-style: normal;
+	font-weight: normal;
+	speak: none;
+
+	display: inline-block;
+	text-decoration: inherit;
+	width: 1em;
+	text-align: center;
+
+	/* For safety - reset parent styles, that can break glyph codes*/
+	font-variant: normal;
+	text-transform: none;
+
+	/* fix buttons height, for twitter bootstrap */
+	line-height: 1em;
+
+	/* Font smoothing. That was taken from TWBS */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	/* 속성 추가 */
+	vertical-align: top;
+}
+
+.fn-shopping.fn-18 { font-size: 18px; }
+.fn-shopping.fn-24 { font-size: 24px; }
+.fn-shopping.fn-36 { font-size: 36px; }
+.fn-shopping.fn-48 { font-size: 48px; }
+
+.fn-shopping-art1:before { content: "\EA01" }
+.fn-shopping-art2:before { content: "\EA02" }
+.fn-shopping-beauty1:before { content: "\EA03" }
+.fn-shopping-beauty2:before { content: "\EA04" }
+.fn-shopping-best1:before { content: "\EA05" }
+.fn-shopping-best2:before { content: "\EA06" }
+.fn-shopping-caution1:before { content: "\EA07" }
+.fn-shopping-caution2:before { content: "\EA08" }
+.fn-shopping-confirm1:before { content: "\EA09" }
+.fn-shopping-confirm2:before { content: "\EA0A" }
+.fn-shopping-department1:before { content: "\EA0B" }
+.fn-shopping-department2:before { content: "\EA0C" }
+.fn-shopping-designer1:before { content: "\EA0D" }
+.fn-shopping-designer2:before { content: "\EA0E" }
+.fn-shopping-foreign1:before { content: "\EA0F" }
+.fn-shopping-foreign2:before { content: "\EA10" }
+.fn-shopping-fresh1:before { content: "\EA11" }
+.fn-shopping-fresh2:before { content: "\EA12" }
+.fn-shopping-gift1:before { content: "\EA13" }
+.fn-shopping-gift2:before { content: "\EA14" }
+.fn-shopping-global1:before { content: "\EA15" }
+.fn-shopping-global2:before { content: "\EA16" }
+.fn-shopping-good-service:before { content: "\EA17" }
+.fn-shopping-grade:before { content: "\EA18" }
+.fn-shopping-group-choice:before { content: "\EA19" }
+.fn-shopping-hotdeal1:before { content: "\EA1A" }
+.fn-shopping-hotdeal2:before { content: "\EA1B" }
+.fn-shopping-kids1:before { content: "\EA1C" }
+.fn-shopping-kids2:before { content: "\EA1D" }
+.fn-shopping-living1:before { content: "\EA1E" }
+.fn-shopping-living2:before { content: "\EA1F" }
+.fn-shopping-outlet1:before { content: "\EA20" }
+.fn-shopping-outlet2:before { content: "\EA21" }
+.fn-shopping-penalty:before { content: "\EA22" }
+.fn-shopping-pet1:before { content: "\EA23" }
+.fn-shopping-pet2:before { content: "\EA24" }
+.fn-shopping-plan1:before { content: "\EA25" }
+.fn-shopping-plan2:before { content: "\EA26" }
+.fn-shopping-play1:before { content: "\EA27" }
+.fn-shopping-play2:before { content: "\EA28" }
+.fn-shopping-rotate1:before { content: "\EA29" }
+.fn-shopping-sales-manage:before { content: "\EA2A" }
+.fn-shopping-sanction:before { content: "\EA2B" }
+.fn-shopping-style1:before { content: "\EA2C" }
+.fn-shopping-style2:before { content: "\EA2D" }
+.fn-shopping-user-group:before { content: "\EA2E" }
+.fn-shopping-user-new:before { content: "\EA2F" }
+.fn-shopping-user-poke:before { content: "\EA30" }
+.fn-shopping-user-purchase:before { content: "\EA31" }
+.fn-shopping-user-talktalk:before { content: "\EA32" }

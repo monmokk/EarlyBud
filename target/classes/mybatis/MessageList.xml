@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.earlybud.vo.MessageListVO">
+	<insert id="sendMessage">
+		insert into MESSAGE values
+		(MESSAGE_CODE_SEQ.nextval, null, 'skyblue@gmail.com', 'red@gmail.com', '새로운 메세지~~', to_date(SYSDATE, 'yyyy-mm-dd hh24:mi:ss'), 1)
+	</insert>
+	
+	<insert id="sendMessageX">		
+		insert into MESSAGE values
+		(MESSAGE_CODE_SEQ.nextval, null, #{receiver}, #{email}, #{content}, SYSDATE, 1)
+	</insert>
+	
+	<update id="changeRead">
+		update MESSAGE set READ_CHECK=1 where MESSAGE_CODE=24
+	</update>
+	
+	<update id="changeReadX">
+		update MESSAGE set READ_CHECK=1 where MESSAGE_CODE=#{message_code}
+	</update>
+	
+	<select id="AllMessagesWithYou" resultType="com.earlybud.vo.MessageListVO"><!-- 좋아요한 아이템들 목록 불러오기 -->
+  		SELECT
+		    CONTENT, RECEIVER, SENDER, SEND_DATE, READ_CHECK, MESSAGE_CODE, ITEM_CODE
+		    FROM MESSAGE
+		    where ((SENDER = 'red@gmail.com' or RECEIVER='red@gmail.com') and (SENDER='blue@gmail.com' or RECEIVER='blue@gmail.com'))
+            order by MESSAGE_CODE
+  	</select>
+  	
+  	<select id="AllMessagesWithYouX" resultType="com.earlybud.vo.MessageListVO"><!-- 좋아요한 아이템들 목록 불러오기 -->
+  		SELECT
+		    CONTENT, RECEIVER, SENDER, SEND_DATE, READ_CHECK, MESSAGE_CODE, ITEM_CODE
+		    FROM MESSAGE
+		    where ((SENDER = #{email} or RECEIVER=#{email}) and (SENDER=#{receiver} or RECEIVER=#{receiver}))
+            order by MESSAGE_CODE
+  	</select>
+  	
+	<select id="IamSender" resultType="com.earlybud.vo.MessageListVO"><!-- 좋아요한 아이템들 목록 불러오기 -->
+  		SELECT
+		    MEMBER.NICKNAME, SELLER.IMAGE, MESSAGE.CONTENT
+		    FROM MESSAGE
+		    LEFT OUTER JOIN SELLER on MESSAGE.receiver = SELLER.email
+		    LEFT OUTER JOIN MEMBER on SELLER.email = MEMBER.email
+		    where MESSAGE.SENDER = 'red@gmail.com'
+  	</select>
+  	
+  	<select id="YouareSender" resultType="com.earlybud.vo.MessageListVO"><!-- 좋아요한 아이템들 목록 불러오기 -->
+  		SELECT
+		    MEMBER.NICKNAME, SELLER.IMAGE, MESSAGE.CONTENT
+		    FROM MESSAGE
+		    LEFT OUTER JOIN SELLER on MESSAGE.sender = SELLER.email
+		    LEFT OUTER JOIN MEMBER on SELLER.email = MEMBER.email
+		    where MESSAGE.RECEIVER = 'red@gmail.com'
+  	</select>
+  	
+  	<select id="IamSenderx" resultType="com.earlybud.vo.MessageListVO"><!-- 좋아요한 아이템들 목록 불러오기 -->
+  		SELECT
+		    MEMBER.NICKNAME, SELLER.IMAGE, MESSAGE.CONTENT
+		    FROM MESSAGE
+		    LEFT OUTER JOIN SELLER on MESSAGE.receiver = SELLER.email
+		    LEFT OUTER JOIN MEMBER on SELLER.email = MEMBER.email
+		    where MESSAGE.SENDER = #{email}
+  	</select>
+  	
+  	<select id="YouareSenderx" resultType="com.earlybud.vo.MessageListVO"><!-- 좋아요한 아이템들 목록 불러오기 -->
+  		SELECT
+		    MEMBER.NICKNAME, SELLER.IMAGE, MESSAGE.CONTENT
+		    FROM MESSAGE
+		    LEFT OUTER JOIN SELLER on MESSAGE.sender = SELLER.email
+		    LEFT OUTER JOIN MEMBER on SELLER.email = MEMBER.email
+		    where MESSAGE.RECEIVER = #{email}
+  	</select>
+
+  	
+  </mapper>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.earlybud.vo.MemberLikeVO">
+
+
+  	<select id="readItemLiked" resultType="com.earlybud.vo.MemberLikeVO"><!-- 좋아요한 아이템들 목록 불러오기 -->
+  		SELECT
+  		ITEM.item_code, ITEM.main_image, ITEM.title, MEMBER.nickname, CATEGORY.cat_name, ITEM.target_sum, ITEM.cur_sum, TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, ITEM.summary,
+  		TRUNC(SYSDATE-ITEM.CLOSINGDATE,0) as TIME, TO_CHAR(ITEM.CUR_SUM, '999,999,999,999') as NOW_SUM
+		FROM LIKES
+		LEFT OUTER JOIN ITEM on LIKES.item_code=ITEM.item_code
+		LEFT OUTER JOIN MEMBER on ITEM.EMAIL=MEMBER.EMAIL
+		LEFT OUTER JOIN CATEGORY on ITEM.cat_code = CATEGORY.cat_code
+		where ITEM.item_code = 48
+  	</select>
+  	
+  	<select id="readItemLikedX" resultType="com.earlybud.vo.MemberLikeVO"><!-- 좋아요한 아이템들 목록 불러오기 -->
+  		SELECT DISTINCT
+  		ITEM.main_image, ITEM.item_code, ITEM.title, MEMBER.nickname, CATEGORY.cat_name, ITEM.target_sum, ITEM.cur_sum, TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, ITEM.summary,
+  		TRUNC(SYSDATE-ITEM.CLOSINGDATE,0) as TIME, TO_CHAR(ITEM.CUR_SUM, '999,999,999,999') as NOW_SUM
+		FROM LIKES
+		LEFT OUTER JOIN ITEM on LIKES.item_code=ITEM.item_code
+		LEFT OUTER JOIN MEMBER on ITEM.EMAIL=MEMBER.EMAIL
+		LEFT OUTER JOIN CATEGORY on ITEM.cat_code = CATEGORY.cat_code
+		where ITEM.item_code in (select ITEM_CODE from LIKES where EMAIL=#{email})
+  	</select>
+  	
+	 <select id="readOneSellerItem" resultType="com.earlybud.vo.MemberLikeVO"><!-- 좋아요한 아이템들 목록 불러오기 -->
+  		SELECT
+  		ITEM.email, ITEM.item_code, ITEM.main_image, ITEM.title, MEMBER.nickname, ITEM.target_sum, ITEM.cur_sum, ITEM.summary, ITEM.closingdate, SELLER.image, SELLER.info,
+  		TRUNC(SYSDATE-ITEM.CLOSINGDATE,0) as TIME, TO_CHAR(ITEM.CUR_SUM, '999,999,999,999') as NOW_SUM, TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT
+		FROM ITEM
+		LEFT OUTER JOIN MEMBER on ITEM.EMAIL=MEMBER.EMAIL
+		LEFT OUTER JOIN SELLER on MEMBER.EMAIL=SELLER.EMAIL
+		where ITEM.email = #{email}
+  	</select>
+  	
+  	<select id="likeCK" resultType="Long" parameterType="String">
+  		select count(*) from LIKES where email=#{email} and seller_email=#{seller}
+  	</select>
+  	
+	<select id="likeAdd" parameterType="String">
+		insert into likes(email, seller_email) values(#{email}, #{seller})
+	</select>
+	
+	<select id="likeDel" parameterType="String">
+		delete from likes where email=#{email} and seller_email= #{seller}
+	</select>
+	
+	<select id="countLikes" resultType="Long" parameterType="Long">
+		select count(*) from likes where seller_email =#{seller}
+	</select>
+	
+	<insert id="likeSeller" parameterType="String"> 
+   	insert into LIKES(#{email}, null, #{seller})  
+   	</insert> 
+   	
+   	<delete id="deleteLikeSeller" parameterType="String">
+   	delete from LIKES where (email=#{email} and seller_email=#{seller})
+   	</delete>
+  	
+  </mapper>

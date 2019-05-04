@@ -1,0 +1,98 @@
+@font-face {
+	font-family: "Naver booking Icons";
+	src: url('../fonts/Naver-booking-Icons.eot?555400424');
+	src: url('../fonts/Naver-booking-Icons.eot?555400424#iefix') format('eot'),
+		url('../fonts/Naver-booking-Icons.woff2?555400424') format('woff2'),
+		url('../fonts/Naver-booking-Icons.woff?555400424') format('woff'),
+		url('../fonts/Naver-booking-Icons.ttf?555400424') format('truetype'),
+		url('../fonts/Naver-booking-Icons.svg?555400424#Naver booking Icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.fn-booking {
+	display: inline-block;
+	height: 1em;
+	line-height: 1em;
+
+	/* 속성 추가 */
+	vertical-align: top;
+}
+.fn-booking:before {
+	font-family: "Naver booking Icons";
+	font-style: normal;
+	font-weight: normal;
+	speak: none;
+
+	display: inline-block;
+	text-decoration: inherit;
+	width: 1em;
+	text-align: center;
+
+	/* For safety - reset parent styles, that can break glyph codes*/
+	font-variant: normal;
+	text-transform: none;
+
+	/* fix buttons height, for twitter bootstrap */
+	line-height: 1em;
+
+	/* Font smoothing. That was taken from TWBS */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	/* 속성 추가 */
+	vertical-align: top;
+}
+
+.fn-booking.fn-18 { font-size: 18px; }
+.fn-booking.fn-24 { font-size: 24px; }
+.fn-booking.fn-36 { font-size: 36px; }
+.fn-booking.fn-48 { font-size: 48px; }
+
+.fn-booking-backward1:before { content: "\EA01" }
+.fn-booking-backward2:before { content: "\EA02" }
+.fn-booking-bed:before { content: "\EA03" }
+.fn-booking-cafeteria-general:before { content: "\EA04" }
+.fn-booking-cafeteria-table:before { content: "\EA05" }
+.fn-booking-calendar:before { content: "\EA06" }
+.fn-booking-caution:before { content: "\EA07" }
+.fn-booking-channel:before { content: "\EA08" }
+.fn-booking-check1:before { content: "\EA09" }
+.fn-booking-check2:before { content: "\EA0A" }
+.fn-booking-close1:before { content: "\EA0B" }
+.fn-booking-close2:before { content: "\EA0C" }
+.fn-booking-cross-in-circle:before { content: "\EA0D" }
+.fn-booking-down1:before { content: "\EA0E" }
+.fn-booking-down2:before { content: "\EA0F" }
+.fn-booking-exposed:before { content: "\EA10" }
+.fn-booking-first-forward1:before { content: "\EA11" }
+.fn-booking-foreign-language:before { content: "\EA12" }
+.fn-booking-forward1:before { content: "\EA13" }
+.fn-booking-forward2:before { content: "\EA14" }
+.fn-booking-hairshop:before { content: "\EA15" }
+.fn-booking-kwon:before { content: "\EA16" }
+.fn-booking-last-backward1:before { content: "\EA17" }
+.fn-booking-line1:before { content: "\EA18" }
+.fn-booking-list:before { content: "\EA19" }
+.fn-booking-m-analysis:before { content: "\EA1A" }
+.fn-booking-m-channel:before { content: "\EA1B" }
+.fn-booking-m-config:before { content: "\EA1C" }
+.fn-booking-m-customer:before { content: "\EA1D" }
+.fn-booking-m-info1:before { content: "\EA1E" }
+.fn-booking-m-service:before { content: "\EA1F" }
+.fn-booking-m-status:before { content: "\EA20" }
+.fn-booking-movie:before { content: "\EA21" }
+.fn-booking-naver-pay:before { content: "\EA22" }
+.fn-booking-newlayer:before { content: "\EA23" }
+.fn-booking-pay-point:before { content: "\EA24" }
+.fn-booking-performance:before { content: "\EA25" }
+.fn-booking-plus1:before { content: "\EA26" }
+.fn-booking-plus2:before { content: "\EA27" }
+.fn-booking-simple:before { content: "\EA28" }
+.fn-booking-smart-place:before { content: "\EA29" }
+.fn-booking-smartplace2:before { content: "\EA2A" }
+.fn-booking-status:before { content: "\EA2B" }
+.fn-booking-ticket:before { content: "\EA2C" }
+.fn-booking-time-calendar:before { content: "\EA2D" }
+.fn-booking-up1:before { content: "\EA2E" }
+.fn-booking-up2:before { content: "\EA2F" }

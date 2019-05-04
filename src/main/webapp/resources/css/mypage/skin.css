@@ -1,0 +1,223 @@
+/* Vars ----------------------------------------------------*//* Mixins ----------------------------------------------------*//* Colors and backgrounds  ----------------------------------------------------*/
+body {
+  /*color: #656360;*/
+  color:#000000;
+  background: #ffffff /*url(../img/noise-all.png) ***body부분에 노이즈 이미지 넣는 것*/;
+}
+body a:hover {
+  color: #cb5432;
+}
+a {
+  color: #cb5432;
+}
+header,
+footer {
+  background: #ffffff;
+}
+/* Selection colours (easy to forget) */
+::selection {
+  background: #cb5432;
+}
+::-moz-selection {
+  background: #cb5432;
+}
+img::selection {
+  background: #cb5432;
+}
+img::-moz-selection {
+  background: #cb5432;
+}
+body {
+  -webkit-tap-highlight-color: #8000ff;
+}
+#headline,
+.masthead {
+  color: #444444;
+}
+/* NAVIGATION ------------------------------------------------------------*/
+#nav > li > a {
+  color: #444;
+}
+#nav > li:hover > a {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border-top: 3px solid #8000ff; /*메뉴 선택 마우스오버*/
+  color: #8000ff;
+}
+#nav span:hover {
+  -webkit-transform: translate(-10px, -3px);
+  -moz-transform: translate(-10px, -3px);
+  -o-transform: translate(-10px, -3px);
+  transform: translate(-10px, -3px);
+}
+#nav > li.current-menu-item > a,
+#nav > li.current_page_item > a {
+  border-top: 3px solid #8000ff; /*현재 선택 메뉴*/
+}
+#nav .sfHover ul {
+  background: #8080ff; /*메뉴의 마우스오버 배경*/
+}
+#nav .sfHover ul li a {
+  color: #400040; /*메뉴의 마우스오버 글씨색*/
+}
+#nav .sfHover ul li a:hover {
+  background: rgba(0, 0, 0, 0.8);
+  color: #cb5432;
+}
+/* MAIN ------------------------------------------------------------*/
+.multiplebgs #main {
+/*
+  background-image: url(../img/main-bg.png), url(../img/main-bg.png);
+  background-repeat: repeat-x, repeat-x;
+  background-position: bottom left, top left;
+********body 부분에서 구분하는 이미지 넣고 반복으로 돌린 것??
+*/
+}
+.no-multiplebgs #main {
+  background: #f1f1f1 url(../img/main-bg.png) repeat-x top left;
+}
+/* FILTERED ITEMS ----------------------------------------------------*/
+#filter-buttons li a {
+  color: #444;
+  border-bottom: 2px solid transparent;
+}
+#filter-buttons li a:hover,
+#filter-buttons li a.selected {
+  border-bottom: 2px solid #444;
+}
+#mycontainer figure,
+#filter-container figure {
+  background: #ffffff;
+}
+#mycontainer figure .thumb,
+#filter-container figure .thumb {
+  background: #a953ff url(../img/icon-link.png) center center no-repeat; /*상품칸 마우스 오버 색깔*/
+}
+#mycontainer figure figcaption .heading,
+#filter-container figure figcaption .heading {
+  color: #444444;
+}
+#mycontainer figure figcaption .heading:hover,
+#filter-container figure figcaption .heading:hover {
+  color: #cb5432;
+}
+#mycontainer figure .readmore,
+#filter-container figure .readmore {
+  color: #444444;
+}
+#mycontainer figure .readmore:hover h5,
+#filter-container figure .readmore:hover h5 {
+  color: #cb5432;
+}
+/* PORTFOLIO ----------------------------------------------------*/#portfolio-content #mycontainer a {
+  color: #888;
+}
+#portfolio-content #mycontainer a:hover {
+  color: #cb5432;
+}
+#portfolio-content .project-pager a {
+  color: #444444;
+}
+#portfolio-content .project-pager a:hover {
+  color: #cb5432;
+}
+#portfolio-content #project-box {
+  background: #f8f5f2;
+}
+#portfolio-content #project-box .info .launch:hover {
+  color: #f1f1f1;
+  background: #cb5432;
+}
+/* RELATED PROJECTS ---------------------------------------------------*/
+.related-projects figure .heading {
+  color: #444444;
+}
+.related-projects figure .heading:hover {
+  color: #cb5432;
+}
+.related-projects figure .thumb {
+  background: #cb5432 url(../img/icon-link.png) no-repeat center center;
+}
+/* CONTACT  ----------------------------------------------------*/#map-holder {
+  background: #f8f5f2;
+}
+/* BLOG ------------------------------------------------------------*/
+#posts-list article .box {
+  /*background: #f8f5f2 url(../img/meta-bg.png) repeat-y top right;*/
+  background: #ffffff url(../img/meta-bg.png) repeat-y top right;
+}
+#posts-list article .box .entry-date {
+  color: #dcd2be;
+  background: #2d2d2d;
+}
+#posts-list article .box .excerpt .post-heading {
+  color: #444444;
+}
+#posts-list article .box .excerpt .post-heading:hover {
+  color: #cb5432;
+}
+#posts-list article .box .excerpt .learnmore {
+  background: #2d2d2d;
+  color: #f8f5f2;
+}
+#posts-list article .box .excerpt .learnmore:hover {
+  background: #cb5432;
+}
+#posts-list article .box .meta a {
+  color: #656360;
+}
+#posts-list article .box .meta a:hover {
+  color: #cb5432;
+}
+#posts-list article.format-standard .feature-image {
+  background: #cb5432 url(../img/icon-link.png) no-repeat center center;
+}
+#posts-list article.format-image .feature-image {
+  background: #cb5432 url(../img/icon-popup.png) no-repeat center center;
+}
+body.single #posts-list article {
+  /*background: #f8f5f2;*//*내가 없앴음*/
+  background:#ffffff;
+}
+body.single #posts-list .box .meta {
+  background: #f8f5f2 url(../img/meta-bg-vertical.png) repeat-x top right;
+}
+/* PAGE NAVIGATION ------------------------------------------------------------*/
+#main .page-navigation a {
+  color: #444444;
+}
+#main .page-navigation a:hover {
+  color: #cb5432;
+}
+/* SIDEBAR ------------------------------------------------------------*/
+#sidebar .cat-item a .post-counter,
+#sidebar .page_item a .post-counter {
+  color: #656360;
+}
+/* SLIDER ----------------------------------------------------*/.lof-slidecontent .slider-description {
+  color: #e6e6e6;
+}
+.lof-slidecontent .slider-description a {
+  color: #FFF;
+}
+.lof-slidecontent .slider-description a.readmore {
+  color: #fcb019;
+}
+.lof-slidecontent .active { /*슬라이드 마우스 휠 바 컬러*/
+  border-top: 3px #8000ff solid;
+}
+/* FOOTER ----------------------------------------------------*/footer {
+  color: #656360;
+}
+footer h4 {
+  color: #656360;
+}
+footer a {
+  color: #656360;
+}
+footer a:hover {
+  color: #8000ff;
+}
+}

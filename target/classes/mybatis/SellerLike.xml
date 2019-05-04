@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.earlybud.vo.SellerLikeVO">
+	
+  	<select id="readSellerLiked" resultType="com.earlybud.vo.SellerLikeVO"><!-- 좋아요한 판매자들 목록 불러오기 --> 		
+  		SELECT
+  		SELLER.image, MEMBER.nickname, SELLER.email
+  		FROM
+  		SELLER LEFT OUTER JOIN LIKES on SELLER.email = LIKES.seller_email
+  		LEFT OUTER JOIN MEMBER on MEMBER.email = LIKES.seller_email
+  		where (LIKES.email = 'red@gmail.com') and (LIKES.seller_email = 'blue@gmail.com')
+  	</select>
+  	
+  	<select id="readSellerLikedX" resultType="com.earlybud.vo.SellerLikeVO"><!-- 좋아요한 판매자들 목록 불러오기 --> 		
+  		SELECT
+  		SELLER.image, MEMBER.nickname, SELLER.email
+  		FROM
+  		SELLER LEFT OUTER JOIN LIKES on SELLER.email = LIKES.seller_email
+  		LEFT OUTER JOIN MEMBER on MEMBER.email = LIKES.seller_email
+  		where (LIKES.email = #{email})
+  	</select>
+  	
+<!--   	<insert id="insertItemLiked" parameterMap="likeListMap"> -->
+<!--   		INSERT into LIKES(EMAIL, ITEM_CODE) -->
+<!--   		values(#{email}, #{item_code}) -->
+<!--   	</insert> -->
+  	
+  	<insert id="insertSellerLiked">
+  		INSERT into LIKES(EMAIL, SELLER_EMAIL)
+  		values(#{email}, #{seller_email})
+  	</insert>
+  	
+  	<delete id="deleteSellerLiked">
+  		delete LIKES
+  		where email = #{email} and seller_email = #{seller_email}
+  	</delete>
+
+  	
+  	
+<!--   	<select id="read" resultMap="memberMap"> -->
+<!--   	SELECT  -->
+<!--   	mem.email, pwd, nickname, phone, addr, detail_addr, joindate, dropdate, item_liked, authority  -->
+<!--   	FROM  -->
+<!--   	member mem LEFT OUTER JOIN authorities auth on mem.email = auth.email  -->
+<!--   	WHERE mem.email = #{email}  -->
+<!--   	</select> -->
+  	
+<!--   	<select id="listMember" resultMap="memberMap"> -->
+<!--   	SELECT  -->
+<!--   	mem.email, nickname, phone, addr, detail_addr, joindate, dropdate, item_liked, authority  -->
+<!--   	FROM  -->
+<!--   	member mem LEFT OUTER JOIN authorities auth on mem.email = auth.email  -->
+<!--   	</select> -->
+  	
+<!--   	<delete id="deleteMember" parameterType="String"> -->
+<!--   	delete from member where email = #{email} -->
+<!--   	</delete> -->
+  	
+  </mapper>

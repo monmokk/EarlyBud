@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.earlybud.vo.AllOrdersVO">
+  	<select id="AllOrders" resultType="com.earlybud.vo.AllOrdersVO"> 
+   		select PURCHASE_ITEM.ITEM_CODE, ITEM.TITLE, ITEM.SUCCESS, MEMBER.NICKNAME, TO_CHAR(PURCHASE_ITEM.PRICE, '999,999,999,999') as PRICE, PURCHASE_ITEM.PUR_DATE, PURCHASE_ITEM.MERCHANT_UID
+			from PURCHASE_ITEM
+			left outer join ITEM on PURCHASE_ITEM.ITEM_CODE = ITEM.ITEM_CODE
+			left outer join MEMBER on ITEM.EMAIL = MEMBER.EMAIL
+			where PURCHASE_ITEM.EMAIL='red@gmail.com'
+   	</select> 
+   	
+   	<select id="AllOrdersX" resultType="com.earlybud.vo.AllOrdersVO"> 
+   		select PURCHASE_ITEM.ITEM_CODE, ITEM.TITLE, ITEM.SUCCESS, MEMBER.NICKNAME, TO_CHAR(PURCHASE_ITEM.PRICE, '999,999,999,999') as PRICE, PURCHASE_ITEM.PUR_DATE, PURCHASE_ITEM.MERCHANT_UID
+			from PURCHASE_ITEM
+			left outer join ITEM on PURCHASE_ITEM.ITEM_CODE = ITEM.ITEM_CODE
+			left outer join MEMBER on ITEM.EMAIL = MEMBER.EMAIL
+			where PURCHASE_ITEM.EMAIL=#{email}
+   	</select> 
+  
+</mapper>

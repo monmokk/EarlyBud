@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.earlybud.model.Item">
+  	<resultMap type="Item" id="itemMap"><!-- dto mapping -->
+  		<result property="item_code" column="ITEM_CODE"/>
+  		<result property="cat_code" column="CAT_CODE"/>
+  		<result property="title" column="TITLE"/>
+  		<result property="summary" column="SUMMARY"/>
+  		<result property="content" column="CONTENT"/>
+  		<result property="main_image" column="MAIN_IMAGE"/>
+  		
+  		<result property="target_sum" column="TARGET_SUM"/>
+  		<result property="cur_sum" column="CUR_SUM"/>
+  		<result property="opendate" column="OPENDATE"/>
+  		<result property="closingdate" column="CLOSINGDATE"/>
+  		<result property="admincall" column="ADMINCALL"/>
+  		<result property="success" column="SUCCESS"/>
+  		<result property="view_count" column="VIEW_COUNT"/>
+  		<result property="encore_num" column="ENCORE_NUM"/>
+  		<result property="encore" column="ENCORE"/>
+  		
+  		<result property="email" column="EMAIL"/>
+  		<result property="cat_name" column="CAT_NAME"/>
+  	</resultMap>
+	
+	<resultMap type="Encore" id="encoreMap">
+		<result property="encore_code" column="ENCORE_CODE" />
+        <result property="item_code" column="ITEM_CODE" />
+        <result property="encore_master" column="ENCORE_MASTER" />
+        <result property="encore_seller" column="ENCORE_SELLER" />
+        <result property="newitem_code" column="NEWITEM_CODE" />
+	</resultMap>
+	
+  	<select id="listItem" resultType="Item">
+  	select ITEM_CODE, TITLE, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
+  	ENCORE_NUM, ENCORE, EMAIL from ITEM order by ITEM_CODE desc
+  	</select>
+  	
+  	<select id="listEncoreItem" resultType="Item">
+  	select ITEM_CODE, TITLE, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
+  	ENCORE_NUM, ENCORE, EMAIL from ITEM where ENCORE_NUM <![CDATA[ > ]]> 10 and SUCCESS >0 
+  	 and ADMINCALL=1 and ITEM_CODE not in (select ITEM_CODE from ENCORE)
+  	 order by ITEM_CODE desc
+  	</select>
+  	
+  	<update id="approveItem" parameterType="Long">
+  	update ITEM set ADMINCALL=1, SUCCESS=0 where ITEM_CODE = #{item_code}
+  	</update>
+  	
+  	<update id="rejectItem" parameterType="Long">
+  	update ITEM set ADMINCALL=2 where ITEM_CODE = #{item_code}
+  	</update>
+  	
+  	<select id="sellerItem" parameterType="ITEM" resultType="Item">
+  	select ITEM_CODE, TITLE, SUMMARY, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
+  	ENCORE_NUM, ENCORE, EMAIL from ITEM where email=#{email} and SUCCESS = 0
+  	</select>
+  	
+  	<select id="sellerEditItem" parameterType="ITEM" resultType="Item">
+  	select ITEM_CODE, TITLE, SUMMARY, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
+  	ENCORE_NUM, ENCORE, EMAIL from ITEM where email=#{email} and ADMINCALL != 1 or ADMINCALL IS NULL
+  	</select>
+  	
+  	<select id="sellerEndItem" parameterType="ITEM" resultType="Item">
+  select ITEM_CODE, TITLE, SUMMARY, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
+  	ENCORE_NUM, ENCORE, EMAIL from ITEM where email=#{email} and SUCCESS>0 and ITEM_CODE not in (select ITEM_CODE from ENCORE)
+  	</select>
+  	
+  	<select id="sellerEncoreItem" parameterType="ITEM" resultType="Item">
+  	select ITEM_CODE, TITLE, SUMMARY, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
+  	ENCORE_NUM, ENCORE, EMAIL from ITEM natural join ENCORE where email=#{email} and ENCORE_MASTER = 1 and ENCORE_SELLER != 1
+  	</select>
+  	
+  	<select id="modifyItem1" parameterType="ITEM" resultType="Item">
+  	select item_code, email, cat_code, title, main_image, opendate, closingdate from item where item_code=#{item_code}
+  	</select>
+  	<update id="modifyItem11" parameterType="Item">
+  		update ITEM set 
+  		cat_code=#{cat_code}, title=#{title}, main_image=#{main_image}, opendate=#{opendate}, closingdate=#{closingdate}
+  		where item_code=#{item_code}
+  	</update>
+  	
+  	<insert id="insertEncore" parameterType="Long">
+  	insert into ENCORE(ENCORE_CODE,ITEM_CODE,ENCORE_MASTER,ENCORE_SELLER,NEWITEM_CODE)
+  	 values(ENCORE_CODE_SEQ.nextval,#{item_code},1,0,0)
+  	</insert>
+  	
+  	<insert id="insertItem" parameterType="Item">
+  		<selectKey keyProperty="item_code" resultType="Item" order="AFTER">
+  		select ITEM_CODE_SEQ.currval as item_code from DUAL
+  		</selectKey>
+  	insert into ITEM(email, cat_code, title, main_image, opendate, closingdate, item_code, admincall) 
+  	values 
+  	(#{email}, #{cat_code}, #{title}, #{main_image}, #{opendate}, #{closingdate}, ITEM_CODE_SEQ.nextval, -1)
+  	</insert>
+  	
+  	
+  	<update id="insertItem2" parameterType="Item" keyProperty="email">
+  	update ITEM set 
+  	item_code=#{item_code}, target_sum = #{target_sum}, summary=#{summary}, content=#{content}, admincall=-1
+  	where item_code=#{item_code}
+  	</update>
+  	<select id="modifyItem2" parameterType="long" resultType="Item">
+  	select item_code, target_sum, summary, content from ITEM where item_code = #{item_code}
+  	</select>
+  	
+  	<select id="selectItem" parameterType="Long" resultType="Item">
+  	select * from ITEM where ITEM_CODE= #{item_code}
+  	</select>
+  	
+  	<select id="selectTypeInfo" parameterType="Long" resultType="java.util.HashMap"> 
+	select price, closingdate-1, name, title, item_code from ITEM natural join TYPE 
+	where type_code = #{type_code}
+	</select>
+	
+	<update id="updateSum" parameterType="hashMap">
+	update ITEM set CUR_SUM = ( CUR_SUM + #{price} ) 
+	where ITEM_CODE = ( select ITEM_CODE from TYPE where TYPE_CODE = #{type_code})
+	</update>
+	
+	<update id="updateCancelSum" parameterType="hashMap">
+	update ITEM set CUR_SUM = ( CUR_SUM - #{price} ) 
+	where ITEM_CODE = ( select ITEM_CODE from TYPE where TYPE_CODE = #{type_code})
+	</update>
+
+	<update id="applyItem" parameterType="Long">
+  	update ITEM set ADMINCALL=0 where ITEM_CODE = #{item_code}
+  	</update>
+  	
+  	<insert id="insertEncoreItem" parameterType="Item">
+  		<selectKey keyProperty="item_code" resultType="Item" order="AFTER">
+  		select ITEM_CODE_SEQ.currval as item_code from DUAL
+  		</selectKey>
+  	insert into ITEM(email, cat_code, title, main_image, opendate, closingdate, item_code, admincall, encore) 
+  	values 
+  	(#{email}, #{cat_code}, #{title}, #{main_image}, #{opendate}, #{closingdate}, ITEM_CODE_SEQ.nextval, -1, 1)
+  	</insert>
+
+  </mapper>

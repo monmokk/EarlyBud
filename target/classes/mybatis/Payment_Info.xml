@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.earlybud.model.Payment_Info">
+	<resultMap type="Payment_Info" id="Payment_Info_Map">
+		<result property="merchant_uid" column="MERCHANT_UID"/>
+   		<result property="nickname" column="NICKNAME"/> 
+   		<result property="email" column="EMAIL"/> 
+   		<result property="del_name" column="DEL_NAME"/> 
+   		<result property="del_phone" column="DEL_PHONE"/> 
+   		<result property="zip_code" column="ZIP_CODE"/> 
+   		<result property="addr1" column="ADDR1"/> 
+   		<result property="addr2" column="ADDR2"/>
+   		<result property="card_owner" column="CARD_OWNER"/>
+   		<result property="cardnum" column="CARDNUM"/>
+   		<result property="birthdate" column="BIRTHDATE"/>
+   		<result property="pur_type" column="PUR_TYPE"/>
+   		<result property="exp_month" column="EXP_MONTH"/>
+   		<result property="exp_year" column="EXP_YEAR"/>
+   		<result property="cardpwd" column="CARDPWD"/>
+   		<result property="amount" column="AMOUNT"/>
+   		<result property="schedule_at" column="SCHEDULE_AT"/>
+   		<result property="type_code" column="TYPE_CODE"/>
+   	</resultMap>
+	
+	<select id="midnight" resultType="map">
+		<![CDATA[	 
+			SELECT pi.IMP_UID, pi.PUR_CODE, 
+					tm.ITEM_CODE, tm.TARGET_SUM, tm.CUR_SUM 
+			FROM ITEM tm, PURCHASE_ITEM pt, PURCHASE_INFO pi 
+			WHERE pt.ITEM_CODE=tm.ITEM_CODE and 
+					pt.PUR_CODE=pi.PUR_CODE and
+					tm.SUCCESS=0 and
+					TRUNC(tm.CLOSINGDATE-tm.SYSDATE,0)=-1
+		]]>
+	</select>	
+	
+	<insert id="insertPayInfo" parameterType="Payment_Info">
+	insert into PAYMENT_INFO (MERCHANT_UID,NICKNAME,EMAIL,DEL_NAME,
+	DEL_PHONE,ZIP_CODE,ADDR1,ADDR2,CARD_OWNER,CARDNUM,BIRTHDATE,
+	PUR_TYPE,EXP_MONTH,EXP_YEAR,CARDPWD,AMOUNT,SCHEDULE_AT,TYPE_CODE) values
+	(#{merchant_uid},#{nickname},#{email},#{del_name},#{del_phone},#{zip_code},#{addr1},#{addr2},
+	#{card_owner},#{cardnum},#{birthdate},#{pur_type},#{exp_month},#{exp_year},#{cardpwd},
+	#{amount},#{schedule_at},#{type_code})
+	</insert>
+	
+</mapper>

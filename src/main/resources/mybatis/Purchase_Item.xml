@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.earlybud.model.Purchase_Item">
+	<resultMap type="Purchase_Item" id="Purchase_Item_Map">
+		<result property="merchant_uid" column="MERCHANT_UID"/>
+   		<result property="customer_uid" column="CUSTOMER_UID"/> 
+   		<result property="email" column="EMAIL"/> 
+   		<result property="item_code" column="ITEM_CODE"/> 
+   		<result property="type_code" column="TYPE_CODE"/>
+   		<result property="price" column="PRICE"/> 
+   		<result property="pur_date" column="PUR_DATE"/> 
+   		<result property="cancel" column="CANCEL"/> 
+   		<result property="invoice" column="INVOICE"/>
+   		<result property="pur_state" column="PUR_STATE"/>
+   		<result property="imp_uid" column="IMP_UID"/>
+   	</resultMap>
+	
+	<select id="selectPurItem" resultType="Purchase_Item">
+	select * from PURCHASE_ITEM where MERCHANT_UID= #{merchant_uid}
+	</select>
+	
+	<select id="listClosingItem" resultType="map">
+	select MERCHANT_UID, CUSTOMER_UID, ITEM_CODE, TYPE_CODE, PRICE, TARGET_SUM, CUR_SUM 
+		from ITEM natural join PURCHASE_ITEM
+ 	where SUCCESS=0 and TRUNC(CLOSINGDATE-SYSDATE,0)=-1;
+	</select>
+	
+	<update id="canclePurchaseItem" parameterType="String">
+	update PURCHASE_ITEM set 
+	cancel = 'y' where MERCHANT_UID = #{merchant_uid}
+	</update>
+	
+	<insert id="insertPurItem" parameterType="Purchase_Item">
+	insert into PURCHASE_ITEM (merchant_uid,customer_uid,email,item_code,type_code,price,pur_date,cancel,invoice,pur_state,imp_uid)  
+   	values(#{merchant_uid},#{customer_uid},#{email},#{item_code},#{type_code},#{price},sysdate,'n',null,null,null) 
+	</insert>
+	
+	<update id="updateImp_uid" parameterType="Map">
+	update PURCHASE_ITEM set
+	IMP_UID= #{imp_uid} where MERCHANT_UID= #{merchant_uid}
+	</update>
+	
+</mapper>

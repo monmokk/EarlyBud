@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<typeAliases>
+	<typeAlias alias="Member" type="com.earlybud.model.Member"/>
+	<typeAlias alias="Authorities" type="com.earlybud.model.Authorities"/>
+	<typeAlias alias="Message" type="com.earlybud.model.Message"/>
+	<typeAlias alias="Category" type="com.earlybud.vo.CategoryVO"/>
+	<typeAlias alias="MemberLike" type="com.earlybud.vo.MemberLikeVO"/>
+	<typeAlias alias="SellerLike" type="com.earlybud.vo.SellerLikeVO"/>
+	<typeAlias alias="MessageList" type="com.earlybud.vo.MessageListVO"/>
+	<typeAlias alias="MessagePeopleList" type="com.earlybud.vo.MessagePeopleListVO"/>
+	<typeAlias alias="RewardVO" type="com.earlybud.vo.RewardVO"/>
+	<typeAlias alias="ItemOption" type="com.earlybud.model.ItemOption"/>
+	<typeAlias alias="CategoryCode" type="com.earlybud.model.Category"/>
+	<typeAlias alias="Type" type="com.earlybud.model.Type"/>
+	<typeAlias alias="Payment_Info" type="com.earlybud.model.Payment_Info"/>
+	<typeAlias alias="Item" type="com.earlybud.model.Item"/>
+	<typeAlias alias="Purchase_Item" type="com.earlybud.model.Purchase_Item"/>
+	<typeAlias alias="AllOrders" type="com.earlybud.vo.AllOrdersVO"/>
+	<typeAlias alias="EachOrder" type="com.earlybud.vo.EachOrderVO"/>
+	<typeAlias alias="Seller" type="com.earlybud.model.Seller"/>
+	<typeAlias alias="MainList" type="com.earlybud.vo.MainVO"/>
+	<typeAlias alias="Encore" type="com.earlybud.model.Encore"/>
+</typeAliases>
+
+<mappers>
+	<mapper resource="mybatis/Member.xml"/>
+	<mapper resource="mybatis/Message.xml"/>
+	<mapper resource="mybatis/Category.xml"/>
+	<mapper resource="mybatis/MemberLike.xml"/>
+	<mapper resource="mybatis/SellerLike.xml"/>
+	<mapper resource="mybatis/MessageList.xml"/>
+	<mapper resource="mybatis/MessagePeopleList.xml"/>
+	<mapper resource="mybatis/Reward.xml"/>
+	<mapper resource="mybatis/CategoryCode.xml"/>
+	<mapper resource="mybatis/Type.xml"/>
+	<mapper resource="mybatis/Payment_Info.xml"/>
+	<mapper resource="mybatis/Item.xml"/>
+	<mapper resource="mybatis/Seller.xml"/>
+	<mapper resource="mybatis/Purchase_Item.xml"/>
+	<mapper resource="mybatis/AllOrders.xml"/>
+	<mapper resource="mybatis/EachOrder.xml"/>
+	<mapper resource="mybatis/MainList.xml"/>
+	<mapper resource="mybatis/Encore.xml"/>
+
+</mappers>
+</configuration>

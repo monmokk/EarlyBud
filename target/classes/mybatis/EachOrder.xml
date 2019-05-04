@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.earlybud.vo.EachOrderVO">
+  	<select id="OneOrder" resultType="com.earlybud.vo.EachOrderVO"> 
+   		select PURCHASE_ITEM.INVOICE, MEMBER.NICKNAME, PURCHASE_ITEM.CANCEL, ITEM.TITLE, TYPE.NAME, PURCHASE_ITEM.PRICE, PAYMENT_INFO.DEL_NAME, PAYMENT_INFO.MERCHANT_UID,
+			PAYMENT_INFO.DEL_PHONE, PAYMENT_INFO.ADDR1, PAYMENT_INFO.ADDR2, PURCHASE_ITEM.PUR_STATE
+			from PAYMENT_INFO
+			left outer join PURCHASE_ITEM on PAYMENT_INFO.MERCHANT_UID = PURCHASE_ITEM.MERCHANT_UID
+			left outer join TYPE on PURCHASE_ITEM.TYPE_CODE = TYPE.TYPE_CODE
+			left outer join ITEM on TYPE.ITEM_CODE = ITEM.ITEM_CODE
+			left outer join MEMBER on ITEM.EMAIL = MEMBER.EMAIL
+			where PAYMENT_INFO.MERCHANT_UID = '1120190219'
+   	</select> 
+   	
+   	<select id="OneOrderX" resultType="com.earlybud.vo.EachOrderVO"> 
+   		select PURCHASE_ITEM.INVOICE, MEMBER.NICKNAME, PURCHASE_ITEM.CANCEL, ITEM.TITLE, TYPE.NAME, PURCHASE_ITEM.PRICE, PAYMENT_INFO.DEL_NAME, PAYMENT_INFO.MERCHANT_UID,
+			PAYMENT_INFO.DEL_PHONE, PAYMENT_INFO.ADDR1, PAYMENT_INFO.ADDR2, PURCHASE_ITEM.PUR_STATE
+			from PAYMENT_INFO
+			left outer join PURCHASE_ITEM on PAYMENT_INFO.MERCHANT_UID = PURCHASE_ITEM.MERCHANT_UID
+			left outer join TYPE on PURCHASE_ITEM.TYPE_CODE = TYPE.TYPE_CODE
+			left outer join ITEM on TYPE.ITEM_CODE = ITEM.ITEM_CODE
+			left outer join MEMBER on ITEM.EMAIL = MEMBER.EMAIL
+			where PAYMENT_INFO.MERCHANT_UID = #{merchant_uid}
+   	</select> 
+   	<update id="cancelOrder">
+   		update PURCHASE_ITEM set CANCEL='y', PUR_STATE='주문 취소중' where MERCHANT_UID=#{merchant_uid}
+   	</update>
+   	
+  
+</mapper>

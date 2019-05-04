@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.earlybud.model.Type">
+   	<resultMap type="Type" id="TypeMap">
+   		<result property="type_code" column="TYPE_CODE"/> 
+   		<result property="item_code" column="ITEM_CODE"/> 
+   		<result property="name" column="NAME"/> 
+   		<result property="info" column="INFO"/> 
+   		<result property="price" column="PRICE"/> 
+   		<result property="pur_num" column="PUR_NUM"/> 
+   	</resultMap> 
+  	
+   	<select id="selectType" resultType="Type" parameterType="Long">
+   	select * from TYPE where item_code = #{item_code} 
+   	</select> 
+	
+   	<insert id="insertType" parameterType="Type"> 
+   	insert into TYPE(type_code,item_code,name,info,price,pur_num)  
+   	values(TYPE_CODE_SEQ.nextval,#{item_code},#{name},#{info},#{price},#{pur_num})  
+   	</insert> 
+  	<delete id="updateType" parameterType="Type">
+  	delete from type where item_code=#{item_code}
+  	</delete>
+   	<update id="updatePurnum" parameterType="Long"> 
+   	update TYPE set pur_num = (pur_num+1) where type_code =#{type_code}
+   	</update>
+   	
+   	<update id="updateCanclePurnum" parameterType="Long">
+   	update TYPE set pur_num = (pur_num-1) where type_code =#{type_code}
+   	</update>
+   	
+  	<insert id="insertOption" parameterType="Type">
+  	insert into TYPE(item_code, type_code, info, name, price, pur_num) 
+  	values(#{item_code}, TYPE_CODE_SEQ.nextval, #{info}, #{name}, #{price}, 0)
+  	</insert>
+  </mapper>

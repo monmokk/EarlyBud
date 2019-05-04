@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.earlybud.vo.CategoryVO">
+
+	<!-- 최신순 -->
+	<select id="selectAll" resultType="com.earlybud.vo.CategoryVO" parameterType="com.earlybud.vo.PageVO">
+      
+      SELECT * 
+      FROM (SELECT  q.*, rownum rn 
+      			FROM(select ITEM_CODE, CAT_CODE, CAT_NAME, TITLE, SUMMARY, MAIN_IMAGE, IMAGE, NICKNAME, 
+      			TO_CHAR(CUR_SUM, '999,999,999,999') as NOW_SUM, 
+      			TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, CLOSINGDATE from ITEM 
+      			natural join MEMBER natural join CATEGORY natural join SELLER where ADMINCALL=1 
+      			order by CAT_CODE desc) q) where rn BETWEEN #{first} AND #{last}      
+      
+      </select>
+  
+	<select id="getList" resultType="com.earlybud.vo.CategoryVO">
+		select ITEM_CODE, CAT_CODE, CAT_NAME, TITLE, SUMMARY, MAIN_IMAGE, IMAGE, NICKNAME, TO_CHAR(CUR_SUM, '999,999,999,999') as NOW_SUM, TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, CLOSINGDATE from ITEM natural join MEMBER natural join CATEGORY natural join SELLER order by CAT_CODE	
+	</select>
+		
+	<select id="countItem" resultType="int" parameterType="hashmap">
+	     select count(*) from ITEM where CAT_CODE in 
+	     	<foreach collection="categoryList" item="item" index="index" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+	     and ADMINCALL=1
+	</select>	
+	
+	<select id="SelectCategory" resultType="com.earlybud.vo.CategoryVO" parameterType="hashmap">
+      SELECT * 
+      FROM (SELECT  q.*, rownum rn 
+      		FROM(select ITEM_CODE, CAT_CODE, CAT_NAME, TITLE, SUMMARY, MAIN_IMAGE, IMAGE, 
+      		NICKNAME, TO_CHAR(CUR_SUM, '999,999,999,999') as NOW_SUM, 
+      		TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, SUCCESS,
+      		CLOSINGDATE, TRUNC(CLOSINGDATE-SYSDATE,0) as TIME from ITEM natural join MEMBER 
+      		natural join CATEGORY natural join SELLER
+      			WHERE       			
+      				CAT_CODE in 
+	                <foreach collection="categoryList" item="item" index="index" separator="," open="(" close=")">
+	                    #{item}
+	                </foreach>			
+	           and SUCCESS in (${end_code}) and ADMINCALL=1
+      			ORDER BY ${standard}
+      			) q) 
+      		WHERE rn 
+      		BETWEEN #{first} AND #{last}
+  </select>  
+  	
+	
+</mapper>

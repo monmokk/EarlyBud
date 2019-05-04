@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.earlybud.model.Seller">
+  	<resultMap type="Seller" id="sellerMap"><!-- dto mapping -->
+  		<result property="email" column="email"/>
+  		<result property="image" column="image"/>
+  		<result property="info" column="info"/>
+  		<result property="seller_loc" column="seller_loc"/>
+  		<result property="seller_account" column="seller_account"/>
+  	</resultMap>
+  	<select id="sel_select" parameterType="String" resultType="Seller">
+  	select * from seller where email = #{email}
+  	</select>
+  	
+  	<insert id="insertItem3" parameterType="Seller">
+  	insert into Seller (email, image, info, seller_loc, seller_account) 
+  	values 
+  	(#{email}, #{image}, #{info}, #{seller_loc}, #{seller_account})
+  	</insert>
+  	<update id="updateSeller" parameterType="Seller">
+  	update seller set image=#{image}, info=#{info}, seller_loc=#{seller_loc}, seller_account=#{seller_account} where email=#{email}
+  	</update>
+  </mapper>

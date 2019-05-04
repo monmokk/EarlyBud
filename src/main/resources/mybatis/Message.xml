@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.earlybud.model.Message">
+   	<resultMap type="Message" id="MessageMap">
+   		<result property="message_code" column="MESSAGE_CODE"/> 
+   		<result property="item_code" column="ITEM_CODE"/> 
+   		<result property="receiver" column="RECEIVER"/> 
+   		<result property="sender" column="SENDER"/> 
+   		<result property="content" column="CONTENT"/> 
+   		<result property="send_date" column="SEND_DATE"/> 
+   		<result property="read_check" column="READ_CHECK"/> 
+   	</resultMap> 
+  	
+   	<select id="listMessage" resultType="Message" parameterType="String"> 
+   	select * from message where receiver = #{email} order by message_code desc
+   	</select> 
+  	
+   	<select id="listSentMessage" resultType="Message" parameterType="String"> 
+   	select * from message where sender = #{email} order by message_code desc
+   	</select>
+   	
+   	<select id="countNewMessage" resultType="Integer" parameterType="String"> 
+   	select count(*) from message where receiver = #{email} and read_check<![CDATA[ < ]]>1 
+   	</select> 
+  	
+   	<insert id="sendMessage" parameterType="Message"> 
+   	insert into message(message_code,item_code,receiver,sender,content,send_date,read_check)  
+   	values(MESSAGE_CODE_SEQ.nextval,#{item_code},#{receiver},#{sender},#{content},sysdate,0)  
+   	</insert> 
+  	
+   	<update id="updateRead" parameterType="Integer"> 
+   	update message set read_check = 1 where message_code =#{message_code} 
+   	</update> 
+  	
+   	<delete id="deleteMessage" parameterType="String"> 
+   	delete from message where email = #{email}
+   	</delete> 
+  	
+  </mapper>

@@ -1,0 +1,158 @@
+.elementor-66 .elementor-element.elementor-element-4454f5e0 {
+	background-color: #f7f7f7;
+	transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow
+		0.3s;
+	padding: 100px 0px 100px 0px;
+}
+
+.elementor-66 .elementor-element.elementor-element-4454f5e0>.elementor-background-overlay
+	{
+	transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+}
+
+.elementor-66 .elementor-element.elementor-element-1f65cf0c.elementor-widget-heading .elementor-heading-title
+	{
+	color: #191919;
+}
+
+.elementor-66 .elementor-element.elementor-element-1f65cf0c .elementor-heading-title
+	{
+	font-size: 33px;
+	font-weight: 300;
+	line-height: 48px;
+}
+
+.elementor-66 .elementor-element.elementor-element-1bd6a794 {
+	color: #707070;
+}
+
+.elementor-66 .elementor-element.elementor-element-1bd6a794>.elementor-widget-container
+	{
+	margin: 0px 0px 30px 0px;
+}
+
+.elementor-66 .elementor-element.elementor-element-73539d57 {
+	text-align: left;
+}
+
+.elementor-66 .elementor-element.elementor-element-73539d57 .elementor-image img
+	{
+	width: 800px;
+}
+
+.elementor-66 .elementor-element.elementor-element-33a786c6>.elementor-container
+	{
+	max-width: 800px;
+}
+
+.elementor-66 .elementor-element.elementor-element-33a786c6 {
+	padding: 80px 0px 80px 0px;
+}
+
+.elementor-66 .elementor-element.elementor-element-31c0fc94 {
+	text-align: center;
+}
+
+.elementor-66 .elementor-element.elementor-element-31c0fc94.elementor-widget-heading .elementor-heading-title
+	{
+	color: #191919;
+}
+
+.elementor-66 .elementor-element.elementor-element-31c0fc94 .elementor-heading-title
+	{
+	font-size: 42px;
+	font-weight: 500;
+	line-height: 48px;
+}
+
+.elementor-66 .elementor-element.elementor-element-31c0fc94>.elementor-widget-container
+	{
+	margin: 0px 0px 40px 0px;
+}
+
+.elementor-66 .elementor-element.elementor-element-22cea4ed>.elementor-widget-container
+	{
+	padding: 0px 0px 0px 0px;
+}
+
+.elementor-66 .elementor-element.elementor-element-5352cf66 {
+	background-color: #f7f7f7;
+	transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow
+		0.3s;
+	padding: 80px 0px 80px 0px;
+}
+
+.elementor-66 .elementor-element.elementor-element-5352cf66>.elementor-background-overlay
+	{
+	transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+}
+
+.elementor-66 .elementor-element.elementor-element-40868ea8 .elementor-icon-box-wrapper
+	{
+	text-align: left;
+}
+
+.elementor-66 .elementor-element.elementor-element-40868ea8 .elementor-icon-box-title
+	{
+	margin-bottom: 15px;
+}
+
+.elementor-66 .elementor-element.elementor-element-24054506 .elementor-icon-box-wrapper
+	{
+	text-align: left;
+}
+
+.elementor-66 .elementor-element.elementor-element-24054506 .elementor-icon-box-title
+	{
+	margin-bottom: 15px;
+}
+
+.elementor-66 .elementor-element.elementor-element-28b164af .elementor-icon-box-wrapper
+	{
+	text-align: left;
+}
+
+.elementor-66 .elementor-element.elementor-element-28b164af .elementor-icon-box-title
+	{
+	margin-bottom: 15px;
+}
+
+@media ( max-width :1024px) {
+	.elementor-66 .elementor-element.elementor-element-32e8ffc2>.elementor-element-populated
+		{
+		padding: 0px 15px 0px 15px;
+	}
+	.elementor-66 .elementor-element.elementor-element-1f65cf0c .elementor-heading-title
+		{
+		font-size: 32px;
+	}
+	.elementor-66 .elementor-element.elementor-element-16a4da1b>.elementor-element-populated
+		{
+		padding: 0px 15px 0px 15px;
+	}
+	.elementor-66 .elementor-element.elementor-element-31c0fc94 .elementor-heading-title
+		{
+		font-size: 32px;
+	}
+}
+
+@media ( max-width :767px) {
+	.elementor-66 .elementor-element.elementor-element-32e8ffc2>.elementor-element-populated
+		{
+		margin: 0px 0px 15px 0px;
+	}
+	.elementor-66 .elementor-element.elementor-element-1f65cf0c {
+		text-align: center;
+	}
+	.elementor-66 .elementor-element.elementor-element-1bd6a794 .elementor-text-editor
+		{
+		text-align: center;
+	}
+	.elementor-66 .elementor-element.elementor-element-16a4da1b>.elementor-element-populated
+		{
+		margin: 0px 0px 15px 0px;
+	}
+	.elementor-66 .elementor-element.elementor-element-31c0fc94 {
+		text-align: center;
+	}
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.earlybud.model.Encore">
+   	<resultMap type="Encore" id="EncoreTableMap">
+   		<result property="encore_code" column="ENCORE_CODE"/> 
+   		<result property="item_code" column="ITEM_CODE"/> 
+   		<result property="encore_master" column="ENCORE_MASTER"/> 
+   		<result property="encore_seller" column="ENCORE_SELLER"/> 
+   		<result property="newitem_code" column="NEWITEM_CODE"/> 
+   	</resultMap> 
+  	
+   	<update id="updateEncore" parameterType="Encore">
+  	update ENCORE set ENCORE_SELLER=1, NEWITEM_CODE=#{newitem_code} where ITEM_CODE = #{item_code}
+  	</update>
+  </mapper>

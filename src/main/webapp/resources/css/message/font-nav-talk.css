@@ -1,0 +1,65 @@
+@font-face {
+	font-family: "Naver talk Icons";
+	src: url('../fonts/Naver-talk-Icons.eot?555400424');
+	src: url('../fonts/Naver-talk-Icons.eot?555400424#iefix') format('eot'),
+		url('../fonts/Naver-talk-Icons.woff2?555400424') format('woff2'),
+		url('../fonts/Naver-talk-Icons.woff?555400424') format('woff'),
+		url('../fonts/Naver-talk-Icons.ttf?555400424') format('truetype'),
+		url('../fonts/Naver-talk-Icons.svg?555400424#Naver talk Icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.fn-talk {
+	display: inline-block;
+	height: 1em;
+	line-height: 1em;
+
+	/* 속성 추가 */
+	vertical-align: top;
+}
+.fn-talk:before {
+	font-family: "Naver talk Icons";
+	font-style: normal;
+	font-weight: normal;
+	speak: none;
+
+	display: inline-block;
+	text-decoration: inherit;
+	width: 1em;
+	text-align: center;
+
+	/* For safety - reset parent styles, that can break glyph codes*/
+	font-variant: normal;
+	text-transform: none;
+
+	/* fix buttons height, for twitter bootstrap */
+	line-height: 1em;
+
+	/* Font smoothing. That was taken from TWBS */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	/* 속성 추가 */
+	vertical-align: top;
+}
+
+.fn-talk.fn-18 { font-size: 18px; }
+.fn-talk.fn-24 { font-size: 24px; }
+.fn-talk.fn-36 { font-size: 36px; }
+.fn-talk.fn-48 { font-size: 48px; }
+
+.fn-talk-box:before { content: "\EA01" }
+.fn-talk-box_check:before { content: "\EA02" }
+.fn-talk-call:before { content: "\EA03" }
+.fn-talk-check:before { content: "\EA04" }
+.fn-talk-delivery:before { content: "\EA05" }
+.fn-talk-document:before { content: "\EA06" }
+.fn-talk-download:before { content: "\EA07" }
+.fn-talk-fixedmenu:before { content: "\EA08" }
+.fn-talk-link:before { content: "\EA09" }
+.fn-talk-mail:before { content: "\EA0A" }
+.fn-talk-npay:before { content: "\EA0B" }
+.fn-talk-send:before { content: "\EA0C" }
+.fn-talk-shop:before { content: "\EA0D" }
+.fn-talk-widget:before { content: "\EA0E" }

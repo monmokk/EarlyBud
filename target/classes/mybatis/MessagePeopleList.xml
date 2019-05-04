@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.earlybud.vo.MessagePeopleListVO">
+
+	<select id="MessagePeople" resultType="com.earlybud.vo.MessagePeopleListVO">
+  		select distinct MEMBER.NICKNAME, MEMBER.EMAIL, SELLER.IMAGE, SELLER.INFO
+			from MESSAGE, MEMBER
+			LEFT OUTER JOIN SELLER ON MEMBER.EMAIL = SELLER.EMAIL
+			where MEMBER.EMAIL in (select distinct RECEIVER from MESSAGE where SENDER = 'red@gmail.com')
+			OR
+			MEMBER.EMAIL in (select distinct SENDER from MESSAGE where RECEIVER = 'red@gmail.com')
+			order by MEMBER.NICKNAME
+  	</select>
+  	
+  	
+  	
+  	<select id="MessagePeopleX" resultType="com.earlybud.vo.MessagePeopleListVO">
+		select distinct MEMBER.NICKNAME, MEMBER.EMAIL, SELLER.IMAGE, SELLER.INFO
+			from MESSAGE, MEMBER
+			LEFT OUTER JOIN SELLER ON MEMBER.EMAIL = SELLER.EMAIL
+			where MEMBER.EMAIL in (select distinct RECEIVER from MESSAGE where SENDER = #{email})
+			OR
+			MEMBER.EMAIL in (select distinct SENDER from MESSAGE where RECEIVER = #{email})
+			order by MEMBER.NICKNAME
+  	</select>
+
+  	
+  </mapper>
